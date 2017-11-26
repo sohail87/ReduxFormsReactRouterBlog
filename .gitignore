@@ -6,7 +6,4 @@ npm-debug.log
 # IntelliJ
 *.iml
 /.idea
-.vs/ProjectSettings.json
-.vs/ReduxFormsReactRouterBlog/v15/.suo
-.vs/slnx.sqlite
-.vs/VSWorkspaceState.json
+/.vs
