@@ -3,7 +3,9 @@ import { connect } from 'react-redux'
 import { fetchPosts } from '../actions'
 
 class PostsIndex extends Component {
-  componentDidMount() {
+  //lifecycle method
+  //will be called immediately after component has shown up in the DOM
+    componentDidMount() {
     this.props.fetchPosts();
   }
   render() {
@@ -15,4 +17,5 @@ class PostsIndex extends Component {
   }
 }
 
+//connect makes fetchPosts available in this.props for PostsIndex
 export default connect(null, {fetchPosts})(PostsIndex);
