@@ -39,11 +39,29 @@ class PostsNew extends Component {
     return (
       <form>
         <Field label="Post Title" name="title" component={this.renderField}/>
-        <Field label="Tags" name="tags" component={this.renderField}/>
+        <Field label="Categories" name="categories" component={this.renderField}/>
         <Field label="Post Content" name="content" component={this.renderField}/>
       </form>
     );
   }
+}
+
+function validate(values) {
+  const errors = {};
+
+  //validate the input from 'values'
+  if (!values.title){
+    errors.title = "Enter a title!";
+  }
+  if (!values.categories){
+    errors.categories = "Enter some categories!";
+  }
+  if (!values.content){
+    errors.content = "Enter some content please!";
+  }
+  //if errors is empty, the form is fine to submit
+  //if errors has any properties, redux form assums form is invalid
+  return errors;
 }
 
 //reduxForm is treated like 'connect' helper of react redux lib
@@ -54,7 +72,10 @@ class PostsNew extends Component {
 //form property must be unique!!! 
 // - if 2 forms are being displayed redux can handle both if names are different
 // otherwise the form state will be merged
-export default reduxForm({form: 'PostsNewForm'})(PostsNew);
+export default reduxForm({
+  validate: validate,
+  form: 'PostsNewForm'
+})(PostsNew);
 //we use the reduxForm helper to wrap the PostsNew Component
 //by doing so we gave reduxForm the ability to communicate
 //directly from this component to the reducer we wired up before
