@@ -39,12 +39,28 @@ class PostsNew extends Component {
     //meta.error property is automatically added to the (field) object
     // from our validate function
   }
+
+  //handles taking the form data and saving it somewhere, i.e. post request
+  onSubmit(values){
+    console.log(values)
+  }
+
+
   render() {
+    //when we wired up the reduxForm helper at the bottom of the file
+    // it added a ton of additional properties that are passed to our component
+    // handle submit..
+    // - run the redux form side of things... the state and validation of our form
+    // - takes a function that we define and runs it if everything looks good
+    const { handleSubmit } = this.props; //this is a function from reduc form library
+    
+    //because this.submit is a callback we use bind(this) to refer to our component
     return (
-      <form>
+      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <Field label="Post Title" name="title" component={this.renderField}/>
         <Field label="Categories" name="categories" component={this.renderField}/>
         <Field label="Post Content" name="content" component={this.renderField}/>
+        <button type="submit" className="btn btn-primary">Submit</button> 
       </form>
     );
   }
