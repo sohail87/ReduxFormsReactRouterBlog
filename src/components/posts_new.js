@@ -32,8 +32,12 @@ class PostsNew extends Component {
         <label>{field.label}</label>
         <input className="form-control" 
           type="text" {...field.input}/>
+        {field.meta.error}
       </div>
+      
     );
+    //meta.error property is automatically added to the (field) object
+    // from our validate function
   }
   render() {
     return (
@@ -52,6 +56,7 @@ function validate(values) {
   //validate the input from 'values'
   if (!values.title){
     errors.title = "Enter a title!";
+    // error property must match values property to create field.meta.error for displaying validation message
   }
   if (!values.categories){
     errors.categories = "Enter some categories!";
