@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom'
 import {Field, reduxForm} from 'redux-form';
+
 //reduxForm identical to connect 
 
 
@@ -66,7 +68,10 @@ class PostsNew extends Component {
         <Field label="Post Title" name="title" component={this.renderField}/>
         <Field label="Categories" name="categories" component={this.renderField}/>
         <Field label="Post Content" name="content" component={this.renderField}/>
+        
         <button type="submit" className="btn btn-primary">Submit</button> 
+        <Link to="/" className="btn btn-danger" >Cancel</Link>
+      
       </form>
     );
   }
