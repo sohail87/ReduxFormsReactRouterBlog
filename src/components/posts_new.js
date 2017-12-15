@@ -51,7 +51,9 @@ class PostsNew extends Component {
 
   //handles taking the form data and saving it somewhere, i.e. post request
   onSubmit(values){
-    this.props.createPost(values)
+    this.props.createPost(values, () => { 
+      this.props.history.push('/')   
+    })
   }
 
 
