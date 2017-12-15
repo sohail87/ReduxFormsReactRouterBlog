@@ -32,7 +32,7 @@ class PostsNew extends Component {
         <label>{field.label}</label>
         <input className="form-control" 
           type="text" {...field.input}/>
-        {field.meta.error}
+        {field.meta.touched ? field.meta.error : ''}
       </div>
       
     );
